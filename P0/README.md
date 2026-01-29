@@ -5,4 +5,4 @@ Practicando con GitHub
 **************************************************************
 
 ![](Ejercicio2-img1.gif)
-![](Ejercicio1-img1.jpg)
+![](Ejercicio2-img2.jpg)
