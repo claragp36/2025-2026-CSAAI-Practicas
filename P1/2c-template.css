@@ -28,11 +28,11 @@ clear: both;
 }
 
 #c1 {
-    background-color:#aaa;
+    background-color:#c46aa9;
 }
 
 #c2 {
-    background-color:#bbb;
+    background-color:#8a5887;
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
@@ -60,6 +60,19 @@ img {
     .iresponsive {
         width: 100%;
     }
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-image: url("fondo.jpg"); /* cambia la ruta */
+    background-size: cover;       /* ocupa toda la pantalla */
+    background-position: center;  /* centrada */
+    background-repeat: no-repeat; /* no se repite */
+    background-attachment: fixed; /* opcional: efecto fijo al hacer scroll */
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
