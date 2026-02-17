@@ -28,11 +28,11 @@ clear: both;
 }
 
 #c1 {
-    background-color:#c46aa9;
+    background-color:#c46aa9b6;
 }
 
 #c2 {
-    background-color:#8a5887;
+    background-color:#8a5887b9;
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
@@ -68,10 +68,8 @@ html, body {
 }
 
 body {
-    background-image: url("fondo.jpg"); /* cambia la ruta */
+    background-image: url("fondo.jpg"); 
     background-size: cover;       /* ocupa toda la pantalla */
-    background-position: center;  /* centrada */
-    background-repeat: no-repeat; /* no se repite */
     background-attachment: fixed; /* opcional: efecto fijo al hacer scroll */
 }
 
