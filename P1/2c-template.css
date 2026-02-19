@@ -6,21 +6,65 @@
   }
   
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
+
+body {
+  background-image: url('fondo.jpg'); 
+  background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+  background-position: center; 
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed;
+  height: 1000px;
+}
+#cuerpo{
+  background-image: url('fondo3.jpg'); 
+  background-size:cover; /* Ajusta la imagen al tamaño de la pantalla */
+  background-position:0px; 
+  background-repeat: no-repeat; /* Evita que la imagen se repita */
+  background-attachment: fixed;
+  height: 1500px;
+}
+body.loaded{
+  opacity: 1;
+}
+
+/*CO*/
 .columna {
 float: left;
 padding: 10px;
 min-height: 500px;
+
 }
 
 .izquierda {
-width: 25%;
-height: 10%;
+width: 20%;
+min-height: 500px;
+text-align: left;
+margin: 10px;
+
 }
+.izquierda2 {
+  width: 40%;
+  min-height: 500px;
+  text-align: left;
+  margin: 10px;
+  }
+.izquierda3 {
+  width: 32%;
+  min-height: 500px;
+  text-align: left;
+  margin: 5px;
+  margin-bottom: 100px;
+  }
+
 
 .derecha {
 width: 75%;
-height: auto;
+margin: 10px;
 }
+.derecha2 {
+  width: 100%;
+  margin: 2px;
+  }
 
 /* Clear floats despues de las columnas para eliminar la superposición */
 .filla:after {
@@ -29,57 +73,122 @@ display: table;
 clear: both;
 }
 
+
 #c1 {
-    background-color:#c46aa9b6;
-}
+    background-color:rgba(208, 63, 221, 0.8);
+    border-radius: 40px;
+    margin-right: 5px;
+    
+  }
 
 #c2 {
-    background-color:#8a5887b9;
+    background-color:rgba(177, 79, 216, 0.8);
+    border-radius: 40px;
+    margin-right: 5px;
+    
+}
+#c3 {
+  background-color:rgba(196, 45, 201, 0.5);
+  border-radius: 40px;
+  
+}
+#c3:hover{
+  background-color:rgba(196, 45, 201, 0.9);
+  transform: scale(1.02);
+  transition: opacity 0.3s ease;
 }
 
+#c4 {
+  background-color:rgba(196, 45, 201, 0.5);
+  border-radius: 40px;
+  margin-top: 40px;
+}
+#c4:hover{
+  background-color:rgba(196, 45, 201, 0.9);
+  transform: scale(1.02);
+  transition: opacity 0.3s ease;
+  }
+  #c5 {
+    background-color:rgba(196, 45, 201, 0.5);
+    border-radius: 40px;
+    margin-top: 40px;
+  }
+  #c5:hover{
+    background-color:rgba(196, 45, 201, 0.9);
+    transform: scale(1.02);
+    transition: opacity 0.3s ease;
+}
+#c6 {
+  background-color:rgba(196, 45, 201, 0.5);
+  border-radius: 40px;
+  margin-top: 40px;
+}
+#c6:hover{
+  background-color:rgba(196, 45, 201, 0.9);
+  transform: scale(1.02);
+  transition: opacity 0.3s ease;
+  }
+iframe{
+  width: 426px;
+  height: 240px;
+  border-radius: 5px;
+  margin-left: 0px;
+  max-width: 95%;
+  
+ 
+  
+  
+  
+}
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
-#img1 {
-    width: 70%;
+img {
+    width: 100%;
     height: auto;
+    border-radius: 10px;
 }
-
-#img2 {
-    width: 40%;
-    height: auto;
+.familia{
+  width: 30%;
+  height: 40%;
+  border-radius: 50%;
+  margin-left: 33%;
+  margin-right: 33%;
 }
-
 .iresponsive {
     padding: 0 6px;
-    float: left;
-    width: 50%;
+    
+    width: 70%;
   }
-
-/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
-/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
-
-@media screen and (max-width: 600px) {
-    .columna {
-      width: 100%;
-    }
-
-    .iresponsive {
-        width: 100%;
-    }
+.contenedor {
+  display:flex;
+  align-items:center;
+  gap: 20px;
+  
+  border-radius: 5px;
+  transition: transform 0.3s ease-in-out;
+  }
+.contenedor:hover{
+  transform: scale(1.1);
 }
-
-html, body {
-    height: 100%;
-    margin: 0;
+.foto1,
+.foto2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  transition: opacity 0.3s ease;
+  
 }
+.foto2{
+  position: absolute;
+  top: -18px;
+  left: -20px;;
+  opacity: 0;
+  width: 100px;
 
-body {
-    background-image: url("fondo.jpg"); 
-    background-size: cover;       /* ocupa toda la pantalla */
-    background-attachment: fixed; /* opcional: efecto fijo al hacer scroll */
+  
 }
-
 .solapar {
   position: relative;
   width: 70px; 
@@ -93,5 +202,126 @@ body {
   margin-left: 5%;
   
   }
+.contenedor:hover .foto1 {
+  opacity: 0;
+  
+}
+.contenedor:hover .foto2 {
+  opacity: 1;
+}
+.button {
+  background-color:rgba(163, 61, 184, 0.8);
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.4s ease-in-out;
+}
+.button1 {
+  background-color:rgba(214, 49, 192, 0.8);
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.4s ease-in-out;
+}
+button:hover {
+  background-color: #357aa8;
+  
+  }
+
+.center{
+  text-align:center;
+  
+  
+}
+.trans{
+  background-color: rgb(127, 255, 0,0.5);
+}
+
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 855px) 
+{
+    .columna {
+      width: 100%;
+      
+    
+    }
+    #c1 {
+      background-color:rgb(49, 214, 206,0.8);
+      border-radius: 40px;
+      margin: auto;
+      
+    }
+    #c2 {
+      background-color:rgb(49, 214, 206,0.8);
+      border-radius: 40px;
+      margin:auto;
+      margin-top: 20px;
+      }
+
+    #c3 {
+      background-color:rgba(196, 45, 201, 0.5);
+      border-radius: 40px;
+      margin:auto;
+      
+    }
+    
+    #c4 {
+      background-color:rgba(196, 45, 201, 0.5);
+      border-radius: 40px;
+      margin-top: 40px;
+      margin:auto;
+      margin-top: 20px;
+    }
+    #c5 {
+      background-color:rgba(196, 45, 201, 0.5);
+      border-radius: 40px;
+      margin-top: 40px;
+      margin:auto;
+      margin-top: 20px;
+    }
+    #c6 {
+      background-color:rgba(196, 45, 201, 0.5);
+      border-radius: 40px;
+      margin-top: 40px;
+      margin:auto;
+      margin-top: 20px;
+    }
+    iframe{
+      width: 426px;
+      height: 240px;
+      border-radius: 5px;
+      margin-left: 0px;
+      max-width: 85%;
+      }
+    .solapar1 {
+      position: relative;
+      width: 70px; 
+      height: 70px;
+      margin-left: 33%;
+      }
+      #cuerpo{
+        background-image: url('fondomovil.jpg'); 
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        background-attachment: fixed;
+        height: auto;
+      }
+      body {
+        background-image: url('fondomovil3.jpg'); 
+        background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+        background-repeat: no-repeat; /* Evita que la imagen se repita */
+        background-attachment: fixed;
+      }
+    .iresponsive {
+        width: 100%;
+    }
+}
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
