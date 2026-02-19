@@ -45,7 +45,7 @@ margin: 10px;
 
 
 .derecha {
-width: 75%;
+width: 70%;
 margin: 10px;
 }
 .derecha2 {
@@ -53,12 +53,15 @@ margin: 10px;
   margin: 2px;
   }
 
-/* Clear floats despues de las columnas para eliminar la superposición */
-.filla:after {
-content: "";
-display: table;
-clear: both;
+.fila {
+    display: flex;
+    flex-wrap: wrap; /* para que las columnas bajen en móvil */
+    gap: 20px;       /* espacio entre columnas */
 }
+.fila-centro {
+    justify-content: center; /* centra horizontalmente las 3 columnas */
+}
+
 
 
 #c1 {
@@ -181,6 +184,7 @@ img {
 
   
 }
+
 .solapar {
   position: relative;
   width: 70px; 
