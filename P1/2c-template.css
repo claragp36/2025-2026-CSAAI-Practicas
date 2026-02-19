@@ -80,4 +80,18 @@ body {
     background-attachment: fixed; /* opcional: efecto fijo al hacer scroll */
 }
 
+.solapar {
+  position: relative;
+  width: 70px; 
+  height: 70px;
+  margin-left: 30px;
+  }
+.solapar1 {
+  position: relative;
+  width: 70px; 
+  height: 70px;
+  margin-left: 5%;
+  
+  }
+
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
