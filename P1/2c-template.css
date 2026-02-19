@@ -14,10 +14,12 @@ min-height: 500px;
 
 .izquierda {
 width: 25%;
+height: 10%;
 }
 
 .derecha {
 width: 75%;
+height: auto;
 }
 
 /* Clear floats despues de las columnas para eliminar la superposición */
@@ -38,8 +40,13 @@ clear: both;
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
-img {
-    width: 100%;
+#img1 {
+    width: 70%;
+    height: auto;
+}
+
+#img2 {
+    width: 40%;
     height: auto;
 }
 
