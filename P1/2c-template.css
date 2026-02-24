@@ -2,123 +2,139 @@
 /* https://developer.mozilla.org/es/docs/Web/CSS/box-sizing */
 /* Así definimos el comportamiento de caja para todos los elementos */
 * {
-    box-sizing: border-box;
-  }
-  
+  box-sizing: border-box;
+}
+
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 
 body {
-  background-image: url('fondo.jpg'); 
-  background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+  background-image: url('fondo.jpg');
+  background-size: cover;
+  /* Ajusta la imagen al tamaño de la pantalla */
   background-attachment: fixed;
 }
 
 
 /*CO*/
 .columna {
-float: left;
-padding: 10px;
-min-height: 500px;
+  float: left;
+  padding: 10px;
+  min-height: 500px;
 
 }
 
 .izquierda {
-width: 22%;
-min-height: 500px;
-text-align: left;
-align-items:center;
-margin: 10px;
+  width: 22%;
+  min-height: 500px;
+  text-align: left;
+  align-items: center;
+  margin: 10px;
 
 }
+
 .izquierda2 {
   width: 40%;
   min-height: 500px;
   text-align: left;
   margin: 10px;
-  }
+}
+
 .izquierda3 {
   width: 32%;
   min-height: 500px;
   text-align: left;
   margin: 5px;
   margin-bottom: 100px;
-  }
+}
 
 
 .derecha {
-width: 70%;
-margin: 10px;
+  width: 70%;
+  margin: 10px;
 }
+
 .derecha2 {
   width: 100%;
   margin: 2px;
-  }
+}
 
 .fila {
-    display: flex;
-    flex-wrap: wrap; /* para que las columnas bajen en móvil */
-    gap: 20px;       /* espacio entre columnas */
+  display: flex;
+  flex-wrap: wrap;
+  /* para que las columnas bajen en móvil */
+  gap: 20px;
+  /* espacio entre columnas */
 }
+
 .fila-centro {
-    justify-content: center; /* centra horizontalmente las 3 columnas */
+  justify-content: center;
+  /* centra horizontalmente las 3 columnas */
 }
 
 
 
 #c1 {
-    background-color:rgba(208, 63, 221, 0.8);
-    border-radius: 5px;
-    margin-right: 5px;
-    
-  }
+  background-color: rgba(208, 63, 221, 0.8);
+  border-radius: 5px;
+  margin-right: 5px;
+
+}
 
 #c2 {
-    background-color:rgba(177, 79, 216, 0.8);
-    border-radius: 5px;
-    margin-right: 5px;
-    
+  background-color: rgba(177, 79, 216, 0.8);
+  border-radius: 5px;
+  margin-right: 5px;
+
 }
+
 #c3 {
-  background-color:rgba(196, 45, 201, 0.5);
+  background-color: rgba(196, 45, 201, 0.5);
   border-radius: 20px;
-  
+
 }
-#c3:hover{
-  background-color:rgba(196, 45, 201, 0.9);
+
+#c3:hover {
+  background-color: rgba(196, 45, 201, 0.9);
   transform: scale(1.02);
   transition: opacity 0.3s ease;
 }
 
 #c4 {
-  background-color:rgba(196, 45, 201, 0.5);
+  background-color: rgba(196, 45, 201, 0.5);
   border-radius: 20px;
   margin-top: 40px;
 }
-#c4:hover{
-  background-color:rgba(196, 45, 201, 0.9);
+
+#c4:hover {
+  background-color: rgba(196, 45, 201, 0.9);
   transform: scale(1.02);
   transition: opacity 0.3s ease;
-  }
-  #c5 {
-    background-color:rgba(196, 45, 201, 0.5);
-    border-radius: 40px;
-    margin-top: 40px;
-  }
-  #c5:hover{
-    background-color:rgba(196, 45, 201, 0.9);
-    transform: scale(1.02);
-    transition: opacity 0.3s ease;
 }
-#c6 {
-  background-color:rgba(196, 45, 201, 0.5);
+
+#c5 {
+  background-color: rgba(196, 45, 201, 0.5);
   border-radius: 40px;
   margin-top: 40px;
 }
-#c6:hover{
-  background-color:rgba(196, 45, 201, 0.9);
+
+#c5:hover {
+  background-color: rgba(196, 45, 201, 0.9);
   transform: scale(1.02);
   transition: opacity 0.3s ease;
-  }
+}
+
+#c6 {
+  background-color: rgba(196, 45, 201, 0.5);
+  border-radius: 40px;
+  margin-top: 40px;
+}
+
+#c6:hover {
+  background-color: rgba(196, 45, 201, 0.9);
+  transform: scale(1.02);
+  transition: opacity 0.3s ease;
+}
+
 iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -126,55 +142,62 @@ iframe {
   display: block;
   margin: 15px auto;
 }
+
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
 /* posicionamiento de imágenes https://www.w3schools.com/css/css_positioning.asp */
 
 
 
 #img1 {
-    width: 145%;
-    height: auto;
-    border-radius: 10px;
+  width: 145%;
+  height: auto;
+  border-radius: 10px;
 }
 
 #img2 {
-    width: 145%;
-    height: auto;
-    border-radius: 5px;
+  width: 145%;
+  height: auto;
+  border-radius: 5px;
 }
 
 img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
-.familia{
+
+.familia {
   width: 30%;
   height: 40%;
   border-radius: 50%;
   margin-left: 33%;
   margin-right: 33%;
 }
+
 .iresponsive {
-    padding: 0 6px;
-    width: 70%;
-    margin: 0 auto;
-  }
+  padding: 0 6px;
+  width: 70%;
+  margin: 0 auto;
+}
+
 .iresponsive1 {
-    padding: 0 6px;
-    width: 70%;
-  }
+  padding: 0 6px;
+  width: 70%;
+}
+
 .contenedor {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   gap: 20px;
-  
+
   border-radius: 5px;
   transition: transform 0.3s ease-in-out;
-  }
-.contenedor:hover{
+}
+
+.contenedor:hover {
   transform: scale(1.1);
 }
+
 .foto1,
 .foto2 {
   position: absolute;
@@ -182,154 +205,185 @@ img {
   left: 0;
   width: 70px;
   transition: opacity 0.3s ease;
-  
+
 }
-.foto2{
+
+.foto2 {
   position: absolute;
   top: 1px;
-  left: 1px;;
+  left: 1px;
+  ;
   opacity: 0;
   width: 80px;
 
-  
+
 }
 
 .solapar {
   position: relative;
-  width: 70px; 
+  width: 70px;
   height: 70px;
   margin-left: 30px;
-  }
-.solapar1 {margin: 0 auto;
+}
+
+.solapar1 {
+  margin: 0 auto;
   position: relative;
-  width: 70px; 
+  width: 70px;
   height: 70px;
   margin-left: 5%;
-  
-  }
+
+}
+
 .contenedor:hover .foto1 {
   opacity: 0;
-  
+
 }
+
 .contenedor:hover .foto2 {
   opacity: 1;
 }
+
 .button {
-  background-color:rgb(127, 214, 255);
+  background-color: rgb(127, 214, 255);
   padding: 5px 10px;
   font-size: 15px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: transform 0.4s ease-in-out;
-}
-.button1 {
-  background-color:rgb(127, 182, 255);
-  padding: 5px 10px;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: transform 0.4s ease-in-out;
-}
-button:hover {
-  background-color: #357aa8;  
 }
 
-.center{
-  text-align:center;
+.button1 {
+  background-color: rgb(127, 182, 255);
+  padding: 5px 10px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: transform 0.4s ease-in-out;
+}
+
+button:hover {
+  background-color: #357aa8;
+}
+
+.center {
+  text-align: center;
 }
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
 /* Así conseguimos que el contenido se vea bien en dispositvos móviles */
 
-@media screen and (max-width: 855px) 
-{
-    .columna {
-      width: 100%;
-      
-    
-    }
-    #c1 {
-      background-color:#c46aa9b6;
-      border-radius: 40px;
-      margin: auto;
-      
-    }
-    #c2 {
-      background-color:#8a5887b9;
-      border-radius: 40px;
-      margin:auto;
-      margin-top: 20px;
-      }
+@media screen and (max-width: 855px) {
+  .columna {
+    width: 100%;
 
-    #c3 {
-      background-color:rgba(196, 45, 201, 0.5);
-      border-radius: 40px;
-      margin:auto;
-      
-    }
-    
-    #c4 {
-      background-color:rgba(196, 45, 201, 0.5);
-      border-radius: 40px;
-      margin-top: 40px;
-      margin:auto;
-      margin-top: 20px;
-    }
-    #c5 {
-      background-color:rgba(196, 45, 201, 0.5);
-      border-radius: 40px;
-      margin-top: 40px;
-      margin:auto;
-      margin-top: 20px;
-    }
-    #c6 {
-      background-color:rgba(196, 45, 201, 0.5);
-      border-radius: 40px;
-      margin-top: 40px;
-      margin:auto;
-      margin-top: 20px;
-    }
-    iframe{
-      width: 426px;
-      height: 240px;
-      border-radius: 5px;
-      margin-left: 0px;
-      max-width: 85%;
-      }
-    .solapar1 {
-      position: relative;
-      width: 70px; 
-      height: 70px;
-      margin-left: 33%;
-      }
-      #cuerpo{
-        background-image: url('fondo.jpg'); 
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
-        background-attachment: fixed;
-        height: auto;
-      }
-      body {
-        background-image: url('fondo.jpg'); 
-        background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
-        background-repeat: no-repeat; /* Evita que la imagen se repita */
-        background-attachment: fixed;
-      }
-    .iresponsive {
-        width: 100%;
-        margin: 0 auto;
-    }
-    .iresponsive1 {
-        width: 100%;
-    }
-    #img2 {
+
+  }
+
+  #c1 {
+    background-color: #c46aa9b6;
+    border-radius: 40px;
+    margin: auto;
+
+  }
+
+  #c2 {
+    background-color: #8a5887b9;
+    border-radius: 40px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  #c3 {
+    background-color: rgba(196, 45, 201, 0.5);
+    border-radius: 40px;
+    margin: auto;
+
+  }
+
+  #c4 {
+    background-color: rgba(196, 45, 201, 0.5);
+    border-radius: 40px;
+    margin-top: 40px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  #c5 {
+    background-color: rgba(196, 45, 201, 0.5);
+    border-radius: 40px;
+    margin-top: 40px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  #c6 {
+    background-color: rgba(196, 45, 201, 0.5);
+    border-radius: 40px;
+    margin-top: 40px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  iframe {
+    width: 426px;
+    height: 240px;
+    border-radius: 5px;
+    margin-left: 0px;
+    max-width: 85%;
+  }
+
+  .solapar1 {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin-left: 33%;
+  }
+
+  #cuerpo {
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-attachment: fixed;
+    height: auto;
+  }
+
+  body {
+    background-image: url('fondo.jpg');
+    background-size: cover;
+    /* Ajusta la imagen al tamaño de la pantalla */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-attachment: fixed;
+  }
+
+  .iresponsive {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .iresponsive1 {
+    width: 100%;
+  }
+
+  /* #img2 {
     width: 90%;
     height: auto;
     border-radius: 5px;
-}
+  } */
+
+  #img2 {
+    width: 80%;     /* más grande pero dentro de la pantalla */
+    max-width: 400px;     /* opcional, para que no se pase de la pantalla */
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;     /* asegura centrado */
+  }
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
