@@ -380,8 +380,7 @@ button:hover {
     width: 80%;     /* más grande pero dentro de la pantalla */
     max-width: 400px;     /* opcional, para que no se pase de la pantalla */
     height: auto;
-    border-radius: 10px;
-    margin: 0 auto;     /* asegura centrado */
+    border-radius: 15x;
   }
 }
 
