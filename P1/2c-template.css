@@ -379,10 +379,10 @@ button:hover {
   } */
 
   #img2 {
-    width: 85%;     /* más grande pero dentro de la pantalla */
+    width: 100%;     /* más grande pero dentro de la pantalla */
     /*max-width: 400px;     /* opcional, para que no se pase de la pantalla */
     height: auto;
-    border-radius: 15x;
+    border-radius: 5x;
   }
 }
 
