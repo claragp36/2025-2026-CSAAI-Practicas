@@ -381,7 +381,6 @@ button:hover {
     max-width: 400px;     /* opcional, para que no se pase de la pantalla */
     height: auto;
     border-radius: 10px;
-    display: block;
     margin: 0 auto;     /* asegura centrado */
   }
 }
