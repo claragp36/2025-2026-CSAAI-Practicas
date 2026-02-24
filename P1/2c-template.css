@@ -325,6 +325,11 @@ button:hover {
     .iresponsive1 {
         width: 40%;
     }
+    #img2 {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
