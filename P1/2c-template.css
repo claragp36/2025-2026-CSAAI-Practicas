@@ -21,10 +21,7 @@ body {
     gap: 30px;             /* Espacio entre cada carta */
     margin: 40px auto;     /* Centra el bloque entero */
     padding: 20px;
-    border-right: 100px ;
-    border-width: 12px;
-    border-top: 50px;
-    border-left: 12px;
+
 }
 
 .proyecto-item {
@@ -121,7 +118,6 @@ body {
   color: #fff;
 }
 
-/*CO*/
 .columna {
   float: left;
   padding: 10px;
@@ -175,39 +171,6 @@ body {
 .fila-centro {
   justify-content: center;
   /* centra horizontalmente las 3 columnas */
-}
-
-.card {
-  background-color: rgba(196, 45, 201, 0.5);
-  border-radius: 20px;
-  padding: 20px;
-  margin: 20px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Hover elegante */
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
-  background-color: rgba(196, 45, 201, 0.8);
-}
-
-/* Imagen dentro de card */
-.card img {
-  border-radius: 15px;
-  margin-bottom: 15px;
-}
-
-/* Títulos */
-.card h2 {
-  margin-top: 10px;
-}
-
-/* Botón dentro de card */
-.card .button {
-  display: inline-block;
-  margin-top: 10px;
 }
 
 
@@ -488,9 +451,7 @@ button:hover {
   body {
     background-image: url('fondo.jpg');
     background-size: cover;
-    /* Ajusta la imagen al tamaño de la pantalla */
     background-repeat: no-repeat;
-    /* Evita que la imagen se repita */
     background-attachment: fixed;
   }
 
@@ -505,17 +466,10 @@ button:hover {
     align-items: center;
   }
 
-  /* #img2 {
-    width: 90%;
+  #img2 {
+    width: 100%;   
     height: auto;
     border-radius: 5px;
-  } */
-
-  #img2 {
-    width: 100%;     /* más grande pero dentro de la pantalla */
-    /*max-width: 400px;     /* opcional, para que no se pase de la pantalla */
-    height: auto;
-    border-radius: 5x;
   }
 }
 
