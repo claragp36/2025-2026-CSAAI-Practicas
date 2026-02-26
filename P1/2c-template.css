@@ -14,6 +14,112 @@ body {
   background-attachment: fixed;
 }
 
+.contenedor-proyectos {
+    display: flex;
+    flex-wrap: wrap;       /* Permite que las cartas salten de línea */
+    justify-content: center; /* Centra las cartas en la pantalla */
+    gap: 30px;             /* Espacio entre cada carta */
+    margin: 40px auto;     /* Centra el bloque entero */
+    padding: 20px;
+    border-right: 100px ;
+    border-width: 12px;
+    border-top: 50px;
+    border-left: 12px;
+}
+
+.proyecto-item {
+    display: flex;
+    background: rgba(202, 77, 233, 0.95);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.proyecto-item .button {
+    display: inline-block; /* Permite que el tamaño lo defina el contenido */
+    align-self: center;    /* Centra el botón horizontalmente en el flujo flex del texto */
+    width: fit-content;    /* Se ajusta estrictamente al ancho del texto */
+    margin: 20px auto;     /* Asegura margen y centrado extra */
+    padding: 12px 25px;    /* Espacio interno para que respire el texto */
+    background-color: #7fd6ff;
+    color: #000;
+    text-decoration: none;
+    border-radius: 50px;   /* Estilo redondeado moderno */
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.proyecto-item .button:hover {
+    background-color: #357aa8;
+    color: #fff;
+    transform: scale(1.05); /* Efecto de crecimiento al pasar el ratón */
+}
+
+
+.proyecto-imagen {
+    width: 35%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 50px;
+}
+
+
+.proyecto-texto {
+    width: 60%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.proyecto-texto h2 {
+    font-size: 2.2rem;    /* Nombres de proyectos todavía más grandes */
+    color: #8b0085;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.proyecto-texto p {
+    font-size: 1.5rem;  /* Texto de descripción gigante */
+    font-family: 'Arial', sans-serif;
+    line-height: 1.1;
+    color: #000;
+}
+
+/* Estilos para el menú de navegación superior */
+.menu-superior {
+  background-color: rgba(255, 255, 255, 0.2); /* Bloque distinto al fondo (blanco traslúcido) */
+  backdrop-filter: blur(5px);                /* Efecto de desenfoque moderno */
+  border-bottom: 2px solid rgba(208, 63, 221, 0.8); /* Subrayado del bloque */
+  padding: 15px 0;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.nav-item {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background-color: rgba(208, 63, 221, 0.8);
+  color: #fff;
+}
 
 /*CO*/
 .columna {
@@ -71,6 +177,38 @@ body {
   /* centra horizontalmente las 3 columnas */
 }
 
+.card {
+  background-color: rgba(196, 45, 201, 0.5);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover elegante */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background-color: rgba(196, 45, 201, 0.8);
+}
+
+/* Imagen dentro de card */
+.card img {
+  border-radius: 15px;
+  margin-bottom: 15px;
+}
+
+/* Títulos */
+.card h2 {
+  margin-top: 10px;
+}
+
+/* Botón dentro de card */
+.card .button {
+  display: inline-block;
+  margin-top: 10px;
+}
 
 
 #c1 {
@@ -89,20 +227,21 @@ body {
 
 #c3 {
   background-color: rgba(196, 45, 201, 0.5);
-  border-radius: 20px;
+  border-radius: 5px;
+  margin-right: 5px;
 
 }
 
 #c3:hover {
   background-color: rgba(196, 45, 201, 0.9);
-  transform: scale(1.02);
-  transition: opacity 0.3s ease;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 #c4 {
   background-color: rgba(196, 45, 201, 0.5);
-  border-radius: 20px;
-  margin-top: 40px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 #c4:hover {
@@ -113,8 +252,8 @@ body {
 
 #c5 {
   background-color: rgba(196, 45, 201, 0.5);
-  border-radius: 40px;
-  margin-top: 40px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 #c5:hover {
@@ -125,8 +264,8 @@ body {
 
 #c6 {
   background-color: rgba(196, 45, 201, 0.5);
-  border-radius: 40px;
-  margin-top: 40px;
+  border-radius: 5px;
+  margin-right: 5px;
 }
 
 #c6:hover {
@@ -135,8 +274,15 @@ body {
   transition: opacity 0.3s ease;
 }
 
+#c7 {
+  background-color: rgba(196, 45, 201, 0.5);
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
 iframe {
-  width: 100%;
+  width: 80%;
+  height: auto;
   aspect-ratio: 16 / 9;
   border-radius: 10px;
   display: block;
