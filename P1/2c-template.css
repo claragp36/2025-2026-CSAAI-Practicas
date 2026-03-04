@@ -472,41 +472,6 @@ button:hover {
     border-radius: 5px;
   }
 
-  .proyecto-item {
-    flex-direction: column;   /* Apila imagen y texto */
-    align-items: center;      /* Centra contenido */
-    text-align: center;
-    width: 95%;
-    margin: 0 auto;
-  }
-
-  .proyecto-imagen {
-    width: 100%;
-    margin: 0;
-  }
-
-  .proyecto-imagen img {
-    width: 100%;
-    border-radius: 20px 20px 0 0;
-  }
-
-  .proyecto-texto {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .proyecto-texto h2 {
-    font-size: 1.6rem;
-  }
-
-  .proyecto-texto p {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-
-  .proyecto-item .button {
-    margin: 15px auto;
-  }
 }
 
 /* Más sobre diseño web responsive https://www.w3schools.com/css/css_rwd_intro.asp */
