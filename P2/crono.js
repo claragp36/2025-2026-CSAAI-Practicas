@@ -101,18 +101,18 @@ function comprobarVictoria() {
     }
 
     if (completado) {
-        document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: " + intentosHTML.textContent + "👏🏼";
+        document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: " + intentosHTML.textContent + " 👏🏼";
         partidaActiva = false;
         clearInterval(intervalo);
     }
 
     if  (intentos == 0 && !completado) {
-        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + "💥";
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + " 💥";
         partidaActiva = false;
         clearInterval(intervalo);
     }
     if (intentos < 0) {
-        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + "💥";
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + " 💥";
         partidaActiva = false;
         clearInterval(intervalo);
     }
