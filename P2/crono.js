@@ -27,6 +27,7 @@ let casillas = [
 
 // Contadores
 let intentosHTML = document.getElementById("intentos");
+let intentos_consumidos = 0;
 let intentosterxtoHTML = document.getElementById("texto_intentos");
 let contadorHTML = document.getElementById("contador");
 let texto_info = document.getElementById("info");
@@ -86,6 +87,7 @@ function actualizarCrono() {
 function activarBotones() {
     let botones = document.querySelectorAll("#teclado button");
     botones.forEach(b => {
+        b.classList.remove("bloqueado");
         b.disabled = false;
         b.style.border = "1px solid rgb(10, 224, 10)";
         b.style.color = "rgb(10, 224, 10)";
@@ -101,18 +103,21 @@ function comprobarVictoria() {
     }
 
     if (completado) {
-        document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: " + intentosHTML.textContent + " 👏🏼";
+        document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos consumidos: " + intentos_consumidos + ". Intentos restantes: " + intentosHTML.textContent + " 👏🏼";
+        document.getElementById("info").style.color = "green"
         partidaActiva = false;
         clearInterval(intervalo);
     }
 
-    if  (intentos == 0 && !completado) {
-        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + " 💥";
+    if (intentos == 0 && !completado) {
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos restantes: 0" + ". La clave era: " + claveSecreta.join("") + " 💥";
+        document.getElementById("info").style.color = "red"
         partidaActiva = false;
         clearInterval(intervalo);
     }
     if (intentos < 0) {
-        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + " 💥";
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos restantes: 0" + ". La clave era: " + claveSecreta.join("") + " 💥";
+        document.getElementById("info").style.color = "red"
         partidaActiva = false;
         clearInterval(intervalo);
     }
@@ -126,23 +131,26 @@ function agregarNumero(num, boton) {
     boton.disabled = true;
     boton.style.border = "1px solid rgb(100, 100, 100)";
     boton.style.color = "rgb(100, 100, 100)";
+    boton.classList.add("bloqueado");
 
     let encontrado = false;
 
     for (let i = 0; i < 4; i++) {
         if (claveSecreta[i] === num) {
             casillas[i].textContent = num;
+            casillas[i].style.color = "green";
             encontrado = true;
+            intentos_consumidos++;
             intentos--;
             intentosHTML.textContent = intentos;
         }
     }
 
     if (!encontrado) {
+        intentos_consumidos++;
         intentos--;
         intentosHTML.textContent = intentos;
     }
-
     comprobarVictoria();
 }
 
@@ -172,6 +180,7 @@ stop.onclick = () => {
 
 reset.onclick = () => {
     document.getElementById("info").innerText = "💣 Nueva partida comenzada ¡Suerte para desactivar la bomba! 💣"
+    document.getElementById("info").style.color = "green"
     activarBotones()
     clearInterval(intervalo);
     generarClave();
@@ -180,7 +189,10 @@ reset.onclick = () => {
     contadorHTML.textContent = "00:00:00";
     intentos = 7;
     intentosHTML.textContent = intentos;
-    casillas.forEach(c => c.textContent = "*");
+    casillas.forEach(c => {
+        c.textContent = "*";
+        c.style.color = "red"; // el asterisco se muestra en rojo
+    });
     intervalo = setInterval(actualizarCrono, 1000);
 };
 
