@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: rgb(149, 247, 104);
+    border: 5px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+h2 {
+    margin-bottom: 5px;
+    color: rgb(149, 247, 104);
+}
+
+h3 {
+    margin-bottom: 5px;
+    color: rgb(149, 247, 104);
+}
+
+#pantalla {
+    border: 5px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#adivina {
+    border: 5px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#numeros {
+    border: 5px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+div {
+    margin: 15px 0;
+
+}
+
+#clave {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.casilla {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border-radius: 6px;
+    background-color: black;
+    border: 1px solid rgb(10, 224, 10);
+    padding: 10px;
+    color: rgb(255, 0, 0)
+}
+
+/* Contadores */
+#intentos,
+#contador {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(149, 247, 104);
+}
+
+/* Teclado */
+#teclado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 220px;
+    margin: 0 auto;
+}
+
+#teclado button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: black;
+    color: rgb(10, 224, 10);
+    cursor: pointer;
+    transition: 0.2s;
+    border: 1px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#teclado button:hover {
+    background-color: #309c2c;
+}
+
+/* Botones de control */
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#start {
+    background-color: black;
+    color: #2ecc71;
+    border: 1px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#stop {
+    background-color: black;
+    color: #e74c3c;
+    border: 1px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#reset {
+    background-color: black;
+    color: #f39c12;
+    border: 1px solid rgb(10, 224, 10);
+    padding: 10px;
+}
+
+#start:hover {
+    background-color: #124d2a;
+}
+
+#stop:hover {
+    background-color: #571b15;
+}
+
+#reset:hover {
+    background-color: #644108;
+}
+
+@media screen and (max-width: 400px) {
+    
+}
