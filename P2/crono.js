@@ -113,7 +113,12 @@ function comprobarVictoria() {
         clearInterval(intervalo);
     }
 
-    if (intentos <= 0) {
+    if  (intentos == 0 && !completado) {
+        document.getElementById("info").innerText = "¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("");
+        partidaActiva = false;
+        clearInterval(intervalo);
+    }
+    if (intentos < 0) {
         document.getElementById("info").innerText = "¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("");
         partidaActiva = false;
         clearInterval(intervalo);
