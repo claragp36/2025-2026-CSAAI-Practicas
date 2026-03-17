@@ -70,13 +70,6 @@ function mostrarCasillas() {
     }
 }
 
-// // Mostrar casillas
-// function mostrarCasillas() {
-//     for (let i = 0; i < 4; i++) {
-//         casillas[i].textContent = casillas[i].textContent || "*";
-//     }
-// }
-
 // Cronómetro
 function actualizarCrono() {
     segundos++;
@@ -108,18 +101,18 @@ function comprobarVictoria() {
     }
 
     if (completado) {
-        document.getElementById("info").innerText = "¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: " + intentosHTML.textContent;
+        document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: " + intentosHTML.textContent + "👏🏼";
         partidaActiva = false;
         clearInterval(intervalo);
     }
 
     if  (intentos == 0 && !completado) {
-        document.getElementById("info").innerText = "¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("");
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + "💥";
         partidaActiva = false;
         clearInterval(intervalo);
     }
     if (intentos < 0) {
-        document.getElementById("info").innerText = "¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("");
+        document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + " Intentos restantes: 0"+ " La clave era: " + claveSecreta.join("") + "💥";
         partidaActiva = false;
         clearInterval(intervalo);
     }
@@ -178,7 +171,7 @@ stop.onclick = () => {
 };
 
 reset.onclick = () => {
-    document.getElementById("info").innerText = "Nueva partida comenzada ¡Suerte para desactivar la bomba!"
+    document.getElementById("info").innerText = "💣 Nueva partida comenzada ¡Suerte para desactivar la bomba! 💣"
     activarBotones()
     clearInterval(intervalo);
     generarClave();
@@ -202,7 +195,5 @@ window.onload = function () {
     intentosterxtoHTML.textContent = texto_intentos;
     intentos = 7;
     intentosHTML.textContent = intentos;
-    // casillas.forEach(c => c.textContent = "*");
-    // activarBotones();
     intervalo = setInterval(actualizarCrono, 1000);
 };
