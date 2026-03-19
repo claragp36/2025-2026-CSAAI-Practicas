@@ -1,9 +1,10 @@
 // VARIABLES GLOBALES
 let claveSecreta = [];
 let partidaActiva = true;
-let segundos = 0;
 let intervalo;
 let intentos = 7;
+let inicio = 0;
+let tiempoAcumulado = 0;
 
 // Botones números
 let btn0 = document.getElementById("btn0");
@@ -30,7 +31,6 @@ let intentosHTML = document.getElementById("intentos");
 let intentos_consumidos = 0;
 let intentosterxtoHTML = document.getElementById("texto_intentos");
 let contadorHTML = document.getElementById("contador");
-let texto_info = document.getElementById("info");
 
 // Botones control
 let start = document.getElementById("start");
@@ -52,38 +52,24 @@ function generarClave() {
     console.log("Clave secreta:", claveSecreta);
 }
 
-// Bloquear todos los botones numéricos
-function bloquearBotones() {
-    let botones = document.querySelectorAll("#teclado button");
-    botones.forEach(b => b.disabled = true);
+// Cronómetro
+function actualizarCrono() {
+    let ahora = Date.now();
+    let tiempo = tiempoAcumulado + (ahora - inicio);
+
+    let total_segundos = Math.floor(tiempo / 1000);
+
+    let m = Math.floor(total_segundos / 60);
+    let s = total_segundos % 60;
+    let mili = Math.floor((tiempo % 1000) / 10);
+
+    contadorHTML.textContent =
+        String(m).padStart(2, "0") + ":" +
+        String(s).padStart(2, "0") + ":" +
+        String(mili).padStart(2, "0");
 }
 
 // Activar todos los botones numéricos
-function activarBotones() {
-    let botones = document.querySelectorAll("#teclado button");
-    botones.forEach(b => b.disabled = false);
-}
-
-// Mostrar casillas
-function mostrarCasillas() {
-    for (let i = 0; i < 4; i++) {
-        casillas[i].textContent = casillas[i].textContent || "*";
-    }
-}
-
-// Cronómetro
-function actualizarCrono() {
-    segundos++;
-    let h = Math.floor(segundos / 3600);
-    let m = Math.floor((segundos % 3600) / 60);
-    let s = segundos % 60;
-    contadorHTML.textContent =
-        String(h).padStart(2, "0") + ":" +
-        String(m).padStart(2, "0") + ":" +
-        String(s).padStart(2, "0");
-}
-
-// Bloquear todos los botones (Reset)
 function activarBotones() {
     let botones = document.querySelectorAll("#teclado button");
     botones.forEach(b => {
@@ -104,20 +90,20 @@ function comprobarVictoria() {
 
     if (completado) {
         document.getElementById("info").innerText = "👏🏼 ¡VICTORIA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos consumidos: " + intentos_consumidos + ". Intentos restantes: " + intentosHTML.textContent + " 👏🏼";
-        document.getElementById("info").style.color = "green"
+        document.getElementById("info").style.color = "green";
         partidaActiva = false;
         clearInterval(intervalo);
     }
 
     if (intentos == 0 && !completado) {
         document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos restantes: 0" + ". La clave era: " + claveSecreta.join("") + " 💥";
-        document.getElementById("info").style.color = "red"
+        document.getElementById("info").style.color = "red";
         partidaActiva = false;
         clearInterval(intervalo);
     }
     if (intentos < 0) {
         document.getElementById("info").innerText = "💥 ¡DERROTA! Tiempo: " + document.getElementById("contador").innerText + ". Intentos restantes: 0" + ". La clave era: " + claveSecreta.join("") + " 💥";
-        document.getElementById("info").style.color = "red"
+        document.getElementById("info").style.color = "red";
         partidaActiva = false;
         clearInterval(intervalo);
     }
@@ -126,6 +112,11 @@ function comprobarVictoria() {
 // Pulsar un número
 function agregarNumero(num, boton) {
     if (!partidaActiva) return;
+
+    if (!intervalo) {
+        inicio = Date.now();
+        intervalo = setInterval(actualizarCrono, 1);
+    }
 
     // bloquear botón
     boton.disabled = true;
@@ -171,21 +162,27 @@ btn9.onclick = () => agregarNumero(9, btn9);
 start.onclick = () => {
     if (!partidaActiva) return; // no hace nada si la partida terminó
     clearInterval(intervalo);    // por si estaba corriendo
-    intervalo = setInterval(actualizarCrono, 1000);
+    if (!intervalo) {
+        inicio = Date.now();
+        intervalo = setInterval(actualizarCrono, 10);
+    }
 };
 
 stop.onclick = () => {
     clearInterval(intervalo);
+    tiempoAcumulado += Date.now() - inicio;
+    intervalo = null;
 };
 
 reset.onclick = () => {
-    document.getElementById("info").innerText = "💣 Nueva partida comenzada ¡Suerte para desactivar la bomba! 💣"
-    document.getElementById("info").style.color = "green"
-    activarBotones()
+    document.getElementById("info").innerText = "💣 Nueva partida comenzada ¡Suerte para desactivar la bomba! 💣";
+    document.getElementById("info").style.color = "green";
+    activarBotones();
     clearInterval(intervalo);
     generarClave();
     partidaActiva = true;
-    segundos = 0;
+    tiempoAcumulado = 0;
+    inicio = Date.now();
     contadorHTML.textContent = "00:00:00";
     intentos = 7;
     intentosHTML.textContent = intentos;
@@ -193,7 +190,7 @@ reset.onclick = () => {
         c.textContent = "*";
         c.style.color = "red"; // el asterisco se muestra en rojo
     });
-    intervalo = setInterval(actualizarCrono, 1000);
+    intervalo = setInterval(actualizarCrono, 1);
 };
 
 // ------------------------------------------------------------
@@ -201,11 +198,9 @@ reset.onclick = () => {
 window.onload = function () {
     generarClave();
     partidaActiva = true;
-    segundos = 0;
     contadorHTML.textContent = "00:00:00";
-    texto_intentos = "Intentos restantes: "
-    intentosterxtoHTML.textContent = texto_intentos;
+    intentosterxtoHTML.textContent = "Intentos restantes: ";
     intentos = 7;
     intentosHTML.textContent = intentos;
-    intervalo = setInterval(actualizarCrono, 1000);
+
 };
