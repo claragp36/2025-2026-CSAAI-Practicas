@@ -134,7 +134,7 @@ function update(timestamp) {
         b.x += velocidadFlota * direccionFlota;
         if (b.x + LADRILLO.w > canvas.width || b.x < 0) tocarBorde = true;
         ctx.drawImage(enemigoImg, b.x, b.y, LADRILLO.w, LADRILLO.h);
-        if (b.y + LADRILLO.h > jugadorY) finalizarJuego("INVASION COMPLETADA", false);
+        if (b.y + LADRILLO.h > jugadorY) finalizarJuego("LOS ALIENS TE HAN INVADIDO!", false);
     });
 
     if (tocarBorde) {
