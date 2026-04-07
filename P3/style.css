@@ -1,0 +1,185 @@
+/* RESET */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background: radial-gradient(circle at center, #020024, #000000 70%);
+color:white;
+display:flex;
+flex-direction:column;
+align-items:center;
+min-height:100vh;
+}
+
+/* TITULO */
+
+.game-title{
+margin-top:20px;
+font-size:40px;
+letter-spacing:4px;
+color:#00ffff;
+text-shadow:0 0 10px #00ffff, 0 0 20px #0088ff;
+}
+
+/* CONTENEDOR DEL JUEGO */
+
+#game-container{
+position:relative;
+margin-top:20px;
+}
+
+/* CANVAS */
+
+#canvas{
+width:800px;
+height:500px;
+background:black;
+border:3px solid #00ffff;
+box-shadow:0 0 20px #00ffff;
+display:block;
+}
+
+/* HUD */
+
+#ui-layer{
+position:absolute;
+top:10px;
+left:10px;
+right:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:18px;
+pointer-events:none;
+}
+
+#puntos{
+color:#00ff00;
+font-weight:bold;
+}
+
+#vivas-display{
+color:#ff4d4d;
+font-size:20px;
+}
+
+/* BARRA DE ENERGÍA */
+
+#energy-container{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+#energy-bar{
+width:150px;
+height:15px;
+background:#333;
+border:1px solid white;
+border-radius:5px;
+overflow:hidden;
+}
+
+#energy-fill{
+width:100%;
+height:100%;
+background:linear-gradient(90deg,#00ffff,#0088ff);
+transition:width 0.2s;
+}
+
+/* BOTÓN COMENZAR */
+
+.modos{
+margin-top:15px;
+text-align:center;
+}
+
+button{
+cursor:pointer;
+padding:10px 20px;
+border:none;
+border-radius:6px;
+font-weight:bold;
+background:#00ffff;
+color:black;
+transition:0.2s;
+}
+
+button:hover{
+background:#00aaff;
+transform:scale(1.05);
+}
+
+/* MODAL GAME OVER */
+
+.modal{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,0.7);
+}
+
+.modal-content{
+background:#111;
+padding:30px;
+border:2px solid #00ffff;
+text-align:center;
+border-radius:10px;
+}
+
+#modal-title{
+margin-bottom:20px;
+color:#ff4444;
+}
+
+/* CONTROLES */
+
+#controls{
+margin-top:20px;
+text-align:center;
+}
+
+.game-controls{
+margin-top:10px;
+display:flex;
+gap:20px;
+justify-content:center;
+}
+
+.game-controls button{
+font-size:20px;
+padding:12px 20px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:900px){
+
+#canvas{
+width:95vw;
+height:60vh;
+}
+
+.game-title{
+font-size:30px;
+}
+
+#ui-layer{
+font-size:14px;
+}
+
+#energy-bar{
+width:100px;
+}
+
+}
