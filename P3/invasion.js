@@ -23,7 +23,6 @@ canvas.height = 500;
 let puntuacion = 0;
 let vidas = 3;
 let juegoActivo = false;
-let nivelActual = 1;
 
 // Jugador
 let jugadorX = 515;
@@ -78,28 +77,14 @@ function disparar() {
         
         energiaActual--; 
         
-        // CAMBIO: La función se llama 'actualizarUI' en tu código, no 'actualizarUIEnergia'
-        actualizarUI(); 
+        actualizarEnergia(); 
         
         sonidoBala.currentTime = 0;
         sonidoBala.play();
     } 
 }
-function gestionarEnergia(timestamp) {
-    if (energiaActual < energiaMax) {
-        // Si ha pasado el tiempo de recarga (500ms), sumamos 1 de energía
-        if (timestamp - ultimaRecarga > TIEMPO_RECARGA) {
-            energiaActual++;
-            ultimaRecarga = timestamp;
-            actualizarUIEnergia();
-        }
-    } else {
-        // Mantiene el contador de tiempo al día si la energía ya está a tope
-        ultimaRecarga = timestamp;
-    }
-}
 
-function actualizarUI() {
+function actualizarEnergia() {
     energyFill.style.width = (energiaActual / energiaMax * 100) + "%";
     livesTxt.innerHTML = "VIDAS: " + "❤️".repeat(vidas);
     puntosTxt.innerHTML = "PUNTOS: " + puntuacion;
@@ -114,12 +99,12 @@ function update(timestamp) {
     if (energiaActual < energiaMax && timestamp - ultimaRecarga > TIEMPO_RECARGA) {
         energiaActual++;
         ultimaRecarga = timestamp;
-        actualizarUI();
+        actualizarEnergia();
     }
 
     // 2. Movimiento Jugador
-    if (teclas["ArrowLeft"] && jugadorX > 0) jugadorX -= 7;
-    if (teclas["ArrowRight"] && jugadorX < canvas.width - jugadorAncho) jugadorX += 7;
+    if (teclas.ArrowLeft && jugadorX > 0) jugadorX -= 7;
+    if (teclas.ArrowRight && jugadorX < canvas.width - jugadorAncho) jugadorX += 7;
     ctx.drawImage(jugadorImg, jugadorX, jugadorY, jugadorAncho, jugadorAncho);
 
     // 3. Gestión de Flota (Movimiento y Velocidad)
@@ -160,7 +145,7 @@ function update(timestamp) {
                 balasJugador.splice(index, 1);
                 puntuacion += 10;
                 sonidoExplosion.play();
-                actualizarUI();
+                actualizarEnergia();
             }
         });
         if (bala.y < 0) balasJugador.splice(index, 1);
@@ -181,7 +166,7 @@ function update(timestamp) {
         if (eb.x > jugadorX && eb.x < jugadorX + jugadorAncho && eb.y > jugadorY && eb.y < jugadorY + jugadorAncho) {
             vidas--;
             balasEnemigas.splice(index, 1);
-            actualizarUI();
+            actualizarEnergia();
             if (vidas <= 0) finalizarJuego("MISION FALLIDA!", false);
         }
         if (eb.y > canvas.height) balasEnemigas.splice(index, 1);
@@ -214,7 +199,9 @@ function finalizarJuego(msg, victoria) {
     juegoActivo = false;
     document.getElementById("game-over").style.display = "flex";
     document.getElementById("modal-title").textContent = msg;
-    victoria ? sonidoVictoria.play() : sonidoDerrota.play();
+    if (victoria) {
+    sonidoVictoria.play();
+		} else { sonidoDerrota.play(); }
 }
 
 document.getElementById("single-level").onclick = () => {
@@ -236,21 +223,21 @@ const btnShoot = document.getElementById('btn-shoot');
 // Movimiento Izquierda
 btnLeft.addEventListener('touchstart', (e) => { 
     e.preventDefault(); 
-    teclas["ArrowLeft"] = true; // Antes decía ArrowRight, por eso fallaba
+    teclas.ArrowLeft = true; // Antes decía ArrowRight, por eso fallaba
 });
-btnLeft.addEventListener('touchend', () => teclas["ArrowLeft"] = false);
+btnLeft.addEventListener('touchend', () => teclas.ArrowLeft = false);
 
 // Movimiento Derecha
 btnRight.addEventListener('touchstart', (e) => { 
     e.preventDefault(); 
-    teclas["ArrowRight"] = true; 
+    teclas.ArrowRight = true; 
 });
-btnRight.addEventListener('touchend', () => teclas["ArrowRight"] = false);
+btnRight.addEventListener('touchend', () => teclas.ArrowRight = false);
 
 // También corrige los eventos de ratón (mousedown) por si acaso:
-btnLeft.addEventListener('mousedown', () => teclas["ArrowLeft"] = true);
-btnLeft.addEventListener('mouseup', () => teclas["ArrowLeft"] = false);
-btnRight.addEventListener('mousedown', () => teclas["ArrowRight"] = true);
-btnRight.addEventListener('mouseup', () => teclas["ArrowRight"] = false);
+btnLeft.addEventListener('mousedown', () => teclas.ArrowLeft = true);
+btnLeft.addEventListener('mouseup', () => teclas.ArrowLeft = false);
+btnRight.addEventListener('mousedown', () => teclas.ArrowRight = true);
+btnRight.addEventListener('mouseup', () => teclas.ArrowRight = false);
 
 btnShoot.onclick = () => disparar();
