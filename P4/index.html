@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flash Sequence Challenge</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
@@ -22,7 +22,7 @@
             <h2 id="active-word">¡LISTO!</h2>
         </section>
 
-        <section id="grid" class="grid-container">
+        <div id="grid" class="grid-container">
             <div class="cell" id="cell-0"></div>
             <div class="cell" id="cell-1"></div>
             <div class="cell" id="cell-2"></div>
@@ -31,9 +31,9 @@
             <div class="cell" id="cell-5"></div>
             <div class="cell" id="cell-6"></div>
             <div class="cell" id="cell-7"></div>
-        </section>
+        </div>
 
-        <section class="controls">
+        <div class="controls">
             <div class="config">
                 <label>Pareja:
                     <select id="select-pair">
@@ -59,7 +59,7 @@
                 <button id="btn-stop" disabled>Detener</button>
                 <button id="btn-music">Música: OFF</button>
             </div>
-        </section>
+        </div>
     </main>
 
     <audio id="audio-menu" src="musica_fondo.mp3" loop></audio>
