@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Flash Sequence Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <main class="game-container">
+        <header>
+            <h1>🤪¡SIGUE LA SECUENCIA!🤪</h1>
+            <div id="status-display">
+                <span>🎚️Nivel: <strong id="current-level">-</strong></span>
+                <span>⏳Tiempo: <strong id="timer">00:00</strong></span>
+            </div>
+        </header>
+
+        <section id="info-area">
+            <h2 id="active-word">¡LISTO!</h2>
+        </section>
+
+        <section id="grid" class="grid-container">
+            <div class="cell" id="cell-0"></div>
+            <div class="cell" id="cell-1"></div>
+            <div class="cell" id="cell-2"></div>
+            <div class="cell" id="cell-3"></div>
+            <div class="cell" id="cell-4"></div>
+            <div class="cell" id="cell-5"></div>
+            <div class="cell" id="cell-6"></div>
+            <div class="cell" id="cell-7"></div>
+        </section>
+
+        <section class="controls">
+            <div class="config">
+                <label>Pareja:
+                    <select id="select-pair">
+                        <option value="casa-cama">🏠 Casa / 🛏️ Cama</option>
+                        <option value="sol-sal">☀️ Sol / 🧂 Sal</option>
+                        <option value="perro-pato">🐶 Perro / 🦆 Pato</option>
+                        <option value="frente-diente">👦 Frente / 🦷 Diente</option>
+                    </select>
+                </label>
+                <label>Nivel Inicial:
+                    <select id="select-start-level">
+                        <option value="1">Nivel 1</option>
+                        <option value="2">Nivel 2</option>
+                        <option value="3">Nivel 3</option>
+                        <option value="4">Nivel 4</option>
+                        <option value="5">Nivel 5</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="actions">
+                <button id="btn-start">Comenzar</button>
+                <button id="btn-stop" disabled>Detener</button>
+                <button id="btn-music">Música: OFF</button>
+            </div>
+        </section>
+    </main>
+
+    <audio id="audio-menu" src="musica_fondo.mp3" loop></audio>
+    <audio id="audio-game" src="musica_juego.mp3" loop></audio>
+
+</body>
+</html>
