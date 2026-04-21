@@ -17,8 +17,8 @@ Mis prácticas de la asignatura Construcción de Servicios y Aplicaciones Audiov
     <li>
     <a href="https://claragp36.github.io/2025-2026-CSAAI-Practicas/P4/">Practica 4</a>
     </li>
-    <!-- <li>
+    <li>
     <a href="https://claragp36.github.io/2025-2026-CSAAI-Practicas/P5/">Practica 5</a>
-    </li> -->
+    </li>
 
 </ul>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot League</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <div id="game-container">
+        <div id="menu-inicial" class="overlay">
+            <h1>BOT LEAGUE</h1>
+            <p>Selecciona Modo de Juego:</p>
+            <button onclick="startGame('3-goles')">Partido a 3 Goles</button>
+            <button onclick="startGame('gol-oro')">Gol de Oro</button>
+        </div>
+
+        <div id="hud" class="hidden">
+            <div id="scoreboard">
+                <span id="score-jugador">0</span> - <span id="score-bot">0</span>
+            </div>
+            <div id="game-mode-text"></div>
+        </div>
+
+        <div id="announcer" class="overlay hidden">
+            <h2 id="announcer-text">3</h2>
+        </div>
+
+        <div id="menu-final" class="overlay hidden">
+            <h1 id="result-title">¡VICTORIA!</h1>
+            <button onclick="resetGame()">Reiniciar</button>
+            <button onclick="location.reload()">Menú Principal</button>
+        </div>
+
+        <audio id="bgMusic" loop>
+            <source src="musica.mp3" type="audio/mpeg">
+        </audio>
+
+        <button id="music-toggle" onclick="toggleMusic()">Música: OFF</button>
+
+        <canvas id="gameCanvas"></canvas>
+    </div>
+
+</body>
+
+</html>
