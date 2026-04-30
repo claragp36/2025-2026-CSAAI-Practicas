@@ -155,30 +155,38 @@ function update() {
 function drawArrow(player, ball) {
     let dx = ball.x - player.x;
     let dy = ball.y - player.y;
-    let distance = Math.sqrt(dx * dx + dy * dy);
-    
-    // Solo dibujamos la flecha si el jugador está relativamente cerca del balón
-    if (distance < 100) {
-        let angle = Math.atan2(dy, dx);
-        let arrowLength = 40;
-        let startX = player.x + Math.cos(angle) * player.r;
-        let startY = player.y + Math.sin(angle) * player.r;
-        let endX = startX + Math.cos(angle) * arrowLength;
-        let endY = startY + Math.sin(angle) * arrowLength;
+    let angle = Math.atan2(dy, dx);
 
-        ctx.strokeStyle = "rgba(255, 255, 0, 0.7)";
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.moveTo(startX, startY);
-        ctx.lineTo(endX, endY);
-        
-        // Cabeza de la flecha
-        let headSize = 10;
-        ctx.lineTo(endX - headSize * Math.cos(angle - Math.PI / 6), endY - headSize * Math.sin(angle - Math.PI / 6));
-        ctx.moveTo(endX, endY);
-        ctx.lineTo(endX - headSize * Math.cos(angle + Math.PI / 6), endY - headSize * Math.sin(angle + Math.PI / 6));
-        ctx.stroke();
-    }
+    let arrowLength = 40;
+
+    let startX = player.x + Math.cos(angle) * player.r;
+    let startY = player.y + Math.sin(angle) * player.r;
+
+    let endX = startX + Math.cos(angle) * arrowLength;
+    let endY = startY + Math.sin(angle) * arrowLength;
+
+    ctx.strokeStyle = "rgba(255, 255, 0, 0.7)";
+    ctx.lineWidth = 4;
+
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(endX, endY);
+
+    let headSize = 10;
+
+    ctx.lineTo(
+        endX - headSize * Math.cos(angle - Math.PI / 6),
+        endY - headSize * Math.sin(angle - Math.PI / 6)
+    );
+
+    ctx.moveTo(endX, endY);
+
+    ctx.lineTo(
+        endX - headSize * Math.cos(angle + Math.PI / 6),
+        endY - headSize * Math.sin(angle + Math.PI / 6)
+    );
+
+    ctx.stroke();
 }
 
 function draw() {
