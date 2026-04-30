@@ -1,20 +1,30 @@
 body {
     margin: 0;
     padding: 0;
-    /* Configuración de la imagen de fondo */
+
     background-image: url('fondo.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    
+
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
     display: flex;
+    flex-direction: column;   /* ← AÑADE ESTO */
     justify-content: center;
     align-items: center;
+
     height: 100vh;
     overflow: hidden;
     color: white;
+}
+
+#controls-text {
+    margin-top: 12px;
+    text-align: center;
+    font-size: 1rem;
+    opacity: 0.85;
 }
 
 #game-container {
