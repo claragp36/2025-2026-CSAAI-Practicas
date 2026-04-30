@@ -15,7 +15,12 @@ let countdown = 3;
 let musicPlaying = false;
 
 const keys = {};
-window.addEventListener('keydown', function(e) { keys[e.code] = true; });
+window.addEventListener('keydown', function(e) { 
+    keys[e.code] = true; 
+    if(["Space", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.code)) {
+        e.preventDefault();
+    }
+});
 window.addEventListener('keyup', function(e) { keys[e.code] = false; });
 
 // --- CONFIGURACIÓN DE EQUIPOS ---
@@ -52,7 +57,7 @@ function startMusicQuietly() {
         musicPlaying = true;
         musicBtn.innerText = "Música: ON";
         musicBtn.classList.add('playing');
-    }).catch(function(e) { /* Silencioso si falla */ });
+    }).catch(function(e) { });
 }
 
 // --- LÓGICA DE IA Y MOVIMIENTO ---
@@ -81,7 +86,38 @@ function updateAI(bot, targetBall) {
     }
 }
 
-// --- NÚCLEO ---
+// --- NÚCLEO DE FÍSICA ---
+function checkCollision(obj, ball) {
+    let dx = ball.x - obj.x, dy = ball.y - obj.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    let minDistance = obj.r + ball.r;
+
+    if (distance < minDistance) {
+        let angle = Math.atan2(dy, dx);
+        let overlap = minDistance - distance;
+        
+        ball.x += Math.cos(angle) * overlap;
+        ball.y += Math.sin(angle) * overlap;
+
+        let bouncePower = obj.isPlayer ? 1.5 : 6;
+        ball.dx = Math.cos(angle) * bouncePower;
+        ball.dy = Math.sin(angle) * bouncePower;
+    }
+}
+
+function checkKick(player, ball) {
+    if (!keys.Space) return; 
+
+    let dx = ball.x - player.x, dy = ball.y - player.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    
+    if (distance < player.r + ball.r + 15) {
+        let angle = Math.atan2(dy, dx);
+        ball.dx = Math.cos(angle) * 13; 
+        ball.dy = Math.sin(angle) * 13;
+    }
+}
+
 function update() {
     if (!gameRunning) return;
 
@@ -90,6 +126,8 @@ function update() {
     if (keys.ArrowDown && p1.y < canvas.height - p1.r) p1.y += p1.speed;
     if (keys.ArrowLeft && p1.x > p1.r) p1.x -= p1.speed;
     if (keys.ArrowRight && p1.x < canvas.width - p1.r) p1.x += p1.speed;
+
+    checkKick(p1, ball);
 
     updateAI(teamBlue[1], ball);
     teamRed.forEach(function(bot) { updateAI(bot, ball); });
@@ -113,20 +151,64 @@ function update() {
     teamBlue.concat(teamRed).forEach(function(p) { checkCollision(p, ball); });
 }
 
-function checkCollision(obj, ball) {
-    let dx = ball.x - obj.x, dy = ball.y - obj.y;
+// --- FUNCIONES DE DIBUJO ---
+function drawArrow(player, ball) {
+    let dx = ball.x - player.x;
+    let dy = ball.y - player.y;
     let distance = Math.sqrt(dx * dx + dy * dy);
-    let minDistance = obj.r + ball.r;
-    if (distance < minDistance) {
+    
+    // Solo dibujamos la flecha si el jugador está relativamente cerca del balón
+    if (distance < 100) {
         let angle = Math.atan2(dy, dx);
-        let overlap = minDistance - distance;
-        ball.x += Math.cos(angle) * overlap;
-        ball.y += Math.sin(angle) * overlap;
-        ball.dx = Math.cos(angle) * 7;
-        ball.dy = Math.sin(angle) * 7;
+        let arrowLength = 40;
+        let startX = player.x + Math.cos(angle) * player.r;
+        let startY = player.y + Math.sin(angle) * player.r;
+        let endX = startX + Math.cos(angle) * arrowLength;
+        let endY = startY + Math.sin(angle) * arrowLength;
+
+        ctx.strokeStyle = "rgba(255, 255, 0, 0.7)";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.moveTo(startX, startY);
+        ctx.lineTo(endX, endY);
+        
+        // Cabeza de la flecha
+        let headSize = 10;
+        ctx.lineTo(endX - headSize * Math.cos(angle - Math.PI / 6), endY - headSize * Math.sin(angle - Math.PI / 6));
+        ctx.moveTo(endX, endY);
+        ctx.lineTo(endX - headSize * Math.cos(angle + Math.PI / 6), endY - headSize * Math.sin(angle + Math.PI / 6));
+        ctx.stroke();
     }
 }
 
+function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    ctx.strokeStyle = "rgba(255,255,255,0.3)";
+    ctx.beginPath(); ctx.moveTo(400, 0); ctx.lineTo(400, 400); ctx.stroke();
+    
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 150, 10, 100); 
+    ctx.fillRect(790, 150, 10, 100);
+
+    const p1 = teamBlue[0];
+    if (gameRunning) drawArrow(p1, ball);
+
+    teamBlue.concat(teamRed).forEach(function(p) {
+        ctx.fillStyle = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+        if(p.isPlayer) { 
+            ctx.strokeStyle = "yellow"; 
+            ctx.lineWidth = 3; 
+            ctx.stroke(); 
+        }
+    });
+
+    ctx.fillStyle = ball.color;
+    ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); ctx.fill();
+}
+
+// --- FLUJO DEL JUEGO ---
 function startGame(mode) {
     if (!musicPlaying) startMusicQuietly();
     gameMode = mode;
@@ -189,23 +271,6 @@ function endGame() {
     document.getElementById('announcer').classList.add('hidden');
     document.getElementById('menu-final').classList.remove('hidden');
     document.getElementById('result-title').innerText = score.player > score.bot ? "¡VICTORIA!" : "DERROTA";
-}
-
-function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.strokeStyle = "rgba(255,255,255,0.3)";
-    ctx.beginPath(); ctx.moveTo(400, 0); ctx.lineTo(400, 400); ctx.stroke();
-    ctx.fillStyle = "white";
-    ctx.fillRect(0, 150, 10, 100); ctx.fillRect(790, 150, 10, 100);
-
-    teamBlue.concat(teamRed).forEach(function(p) {
-        ctx.fillStyle = p.color;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-        if(p.isPlayer) { ctx.strokeStyle = "yellow"; ctx.lineWidth = 3; ctx.stroke(); }
-    });
-
-    ctx.fillStyle = ball.color;
-    ctx.beginPath(); ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2); ctx.fill();
 }
 
 function loop() {
